@@ -10,9 +10,9 @@ an Android app that:
         versionCode 1
         versionName "1.0"
 
-Libraries:
-Drawable Text: com.amulyakhare:com.amulyakhare.textdrawable:1.0.
-Cardview: com.android.support:cardview-v7:23.3.0
-EventBus: de.greenrobot:eventbus:3.0.0-beta1
-JobQues: com.path:android-priority-jobqueue:1.1.2
+        Libraries:
+        Drawable Text: com.amulyakhare:com.amulyakhare.textdrawable:1.0.
+        Cardview: com.android.support:cardview-v7:23.3.0
+        EventBus: de.greenrobot:eventbus:3.0.0-beta1
+        JobQues: com.path:android-priority-jobqueue:1.1.2
 
