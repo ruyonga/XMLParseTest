@@ -39,6 +39,8 @@
                 android:maxLines="2"
                 android:singleLine="true"
                 android:text="Message"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="3dp"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
 

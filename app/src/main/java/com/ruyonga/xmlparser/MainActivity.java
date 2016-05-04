@@ -3,17 +3,16 @@ package com.ruyonga.xmlparser;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.path.android.jobqueue.JobManager;
 import com.ruyonga.xmlparser.Jobs.GetIdMessage;
-import com.ruyonga.xmlparser.sugarorms.savemessage;
 import com.ruyonga.xmlparser.utils.Globals;
 import com.ruyonga.xmlparser.utils.PostMessage;
 
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     JobManager jobManager;
     MessageAdapter messageAdapter;
     List<String> ms = new ArrayList<String>();
-    List<savemessage> saveMessageslist;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Un comment this to delete all locally saved messages
          */
-      //  SaveMessage.deleteAll(SaveMessage.class);
+        //  SaveMessage.deleteAll(SaveMessage.class);
 
         //assign the listview
         ll = (ListView) findViewById(R.id.messagelist);
@@ -70,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
          * Load the previously saved messages as we fetch new ones
          */
         loadOrm();
+
+        MultiDex.install(this);
+
     }
 
     /**
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     @Subscribe
     public void onEvent(final PostMessage mg) {
         log("+++++++++: ReloadHomeActivity even received" + mg.message);
-
+        ms.add(mg.message);
         //RELOAD Adapter
         runOnUiThread(new Runnable() {
             @Override
@@ -149,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
     private class parseXmlAsync extends AsyncTask<String, String, String> {
 
 
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 doc.getDocumentElement().normalize();
                 // Locate the Tag Name
                 // nodelist = doc.getElementsByTagName("item");
-              NodeList  nodelists = doc.getElementsByTagName("item");
+                NodeList nodelists = doc.getElementsByTagName("item");
                 log("nodelist====" + nodelists.getLength());
                 for (int i = 0; i < nodelists.getLength(); i++) {
                     Node node = nodelists.item(i);
@@ -208,13 +209,13 @@ public class MainActivity extends AppCompatActivity {
      * Read locally saved messages
      */
     public void loadOrm() {
-        saveMessageslist = savemessage.find(savemessage.class,null,null,null,null,null);
-        if (saveMessageslist.size() > 0) {
-            messageAdapter = new MessageAdapter(saveMessageslist, getApplicationContext());
+
+        if (ms.size() > 0) {
+            messageAdapter = new MessageAdapter(ms, getApplicationContext());
             ll.setAdapter(messageAdapter);
             messageAdapter.notifyDataSetChanged();
         } else {
-            Toast.makeText(getApplicationContext(), R.string.no_mesa, Toast.LENGTH_LONG).show();
+            // Toast.makeText(getApplicationContext(), R.string.no_mesa, Toast.LENGTH_LONG).show();
         }
     }
 

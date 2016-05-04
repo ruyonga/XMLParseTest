@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.path.android.jobqueue.Job;
 import com.path.android.jobqueue.Params;
-import com.ruyonga.xmlparser.sugarorms.savemessage;
+
 import com.ruyonga.xmlparser.utils.Globals;
 import com.ruyonga.xmlparser.utils.PostMessage;
 
@@ -29,7 +29,7 @@ public class GetIdMessage extends Job {
     Context context;
     String Id;
     boolean log = true;
-    savemessage sm;
+
 
     public GetIdMessage(Context context, String id) {
         super(new Params(5).requireNetwork());
@@ -66,10 +66,8 @@ public class GetIdMessage extends Job {
             for (int i = 0; i < nodelists.getLength(); i++) {
                 Node node = nodelists.item(i);
                 log("**items==" + nodelists.item(i).getTextContent());
-                sm = new savemessage();
-                sm.message = nodelists.item(i).getTextContent();
-                sm.myid = Id;
-                ps.message = nodelists.item(i).getTextContent();
+               ps.message = nodelists.item(i).getTextContent();
+
 
             }
 

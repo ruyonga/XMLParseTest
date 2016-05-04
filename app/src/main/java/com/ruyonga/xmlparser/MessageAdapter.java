@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
-import com.ruyonga.xmlparser.sugarorms.savemessage;
+
 
 import java.util.List;
 import java.util.Random;
@@ -19,11 +19,11 @@ import java.util.Random;
  */
 public class MessageAdapter extends BaseAdapter {
 
-    List<savemessage> mgs;
+    List<String> mgs;
     Context cont;
     public static LayoutInflater inflater = null;
 
-    public MessageAdapter(List<savemessage> ms, Context context) {
+    public MessageAdapter(List<String> ms, Context context) {
         this.mgs = ms;
         this.cont = context;
         inflater = (LayoutInflater) context
@@ -56,8 +56,8 @@ public class MessageAdapter extends BaseAdapter {
         /**
          * Set the notification Data
          */
-        message.setText(mgs.get(position).message);
-        String msg = mgs.get(position).message;
+        message.setText(mgs.get(position));
+        String msg = mgs.get(position);
 
 
         int[] androidColors = cont.getResources().getIntArray(R.array.androidcolors);
