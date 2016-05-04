@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    card_view:cardBackgroundColor="#fff"
-  app:cardElevation="@dimen/cardview_default_elevation"
-    app:cardCornerRadius="4dp">
+    app:cardCornerRadius="4dp"
+    app:cardElevation="@dimen/cardview_default_elevation"
+    app:cardBackgroundColor="#fff">
 
     <RelativeLayout
         android:id="@+id/contact_layout2"
@@ -35,10 +35,11 @@
                 android:id="@+id/Notimessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Message"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="3dp"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:layout_marginTop="5dp"
+                android:text="Message"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000" />
 
 
         </LinearLayout>
