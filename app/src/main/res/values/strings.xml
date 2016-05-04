@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">XmlParser</string>
+    <string name="action_settings">Settings</string>
+    <string name="conn_failed">Failed to fetch message</string>
+    <string name="fetching">Fetching content</string>
+    <string name="found">"found "</string>
+    <string name="ids">" ids"</string>
+    <string name="no_mesa">No messages yet</string>
+</resources>
